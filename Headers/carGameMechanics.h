@@ -33,8 +33,6 @@ void movePlayer(char area[ROWS][COLS], char move);
 void initObjective(char area[ROWS][COLS], int amount, int bombAmount);
 int checkObjective(char area[ROWS][COLS], char type);
 
-extern int lives;
-extern int victoryCount;
-extern int position[POSITION_POINTS];
+
 
 #endif
