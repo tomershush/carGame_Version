@@ -14,4 +14,8 @@ void renderPlayer(char area[ROWS][COLS]);
 void deletePlayer(char area[ROWS][COLS], char moveType);
 void deleteRoad(char area[ROWS][COLS]);
 
+extern int lives;
+extern int victoryCount;
+extern int position[POSITION_POINTS];
+
 #endif
