@@ -5,7 +5,9 @@
 
 void printIntro();
 
-
+int position[POSITION_POINTS] = {0};
+int lives = LIVES;
+int victoryCount = 0;
 
 int main()
 {
@@ -15,11 +17,7 @@ int main()
 
 	position[CURR_X] = START_X;
 	position[CURR_Y] = START_Y;
-	position[PREV_X] = 0;
-	position[PREV_Y] = 0;
 
-	lives = LIVES;
-	victoryCount = 0;
 	
 	initscr();
 	noecho();

@@ -1,6 +1,5 @@
 #include "carGameGraphics.h"
 
-
 /*
 A function to refresh the screen and render the game.
 Input: 2D Array that represents the game area.
