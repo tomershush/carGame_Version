@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "game.C": "c"
+        "game.C": "c",
+        "main.C": "cpp",
+        "cargamemechanics.h": "c"
     }
 }
