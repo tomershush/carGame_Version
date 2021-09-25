@@ -55,16 +55,13 @@ Input: 2D array that represents the game area, move char that represents the dir
 Output: None.
 */
 void movePlayer(char **area, char move)
-{
+{	
 	
-	position[PREV_X] = position[CURR_X];
-	position[PREV_Y] = position[CURR_Y];
-
 	switch(move)
 	{
 		case LEFT:
 			deletePlayer(area, RUN_OVER_HORIZONTAL);
-			position[CURR_X]--;	
+			position[CURR_X]--;
 			break;
 
 		case RIGHT:
@@ -83,6 +80,11 @@ void movePlayer(char **area, char move)
 			break;
 			
 	}
+	
+	position[CURR_X + turn] = position[CURR_X];
+	position[CURR_Y + turn] = position[CURR_Y];
+
+
 	victoryCount += checkObjective(area, OBJECTIVE);
 	lives -= checkObjective(area, BOMB);
 
