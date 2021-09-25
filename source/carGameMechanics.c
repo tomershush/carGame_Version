@@ -3,26 +3,50 @@
 
 
 
+
+
 /*
-A function to initalize the game area.
-Input: 2D Array that represents the game area.
+A function to initialize the game area using a dynamic array.
+Input: Pointer to pointer of type char to represent the game area, number of rows, number of cols.
 Output: None.
 */
-void initArea(char area[ROWS][COLS])
+char **initArea()
 {
 	int i = 0;
 	int j = 0;
+	char **area = NULL;
+	area = (char**)malloc(rows * sizeof(char*));
+	
 
-	for(i = 0; i < ROWS; i++)
+	for(i = 0; i < rows; i++)
 	{
-		for(j = 0; j < COLS; j++)
+		area[i] = (char*)malloc(cols * sizeof(char));
+		
+		
+		for(j = 0; j < cols; j++)
 		{
 			area[i][j] = TILE;
 		}
 	}
-	initObjective(area, OBJECTIVE_COUNT, BOMB_COUNT);	
+	return area;
+	
 }
 
+/*
+A function to free a previously allocated 2D array.
+Input: 2D array, number of rows, number of cols.
+Output: None. 
+*/
+void freeArea(char **area)
+{
+	int i = 0;
+	
+	for(i = 0; i < rows; i++)
+	{
+		free(area[i]);
+	}
+	free(area);
+}
 
 
 /*
@@ -30,7 +54,7 @@ A function to move the player to a new position.
 Input: 2D array that represents the game area, move char that represents the direction of the player movement.
 Output: None.
 */
-void movePlayer(char area[ROWS][COLS], char move)
+void movePlayer(char **area, char move)
 {
 	
 	position[PREV_X] = position[CURR_X];
@@ -70,7 +94,7 @@ void movePlayer(char area[ROWS][COLS], char move)
 
 
 
-void initObjective(char area[ROWS][COLS], int amount, int bombAmount)
+void initObjective(char **area, int amount, int bombAmount)
 {
 	int count = 0;
 	int tempX = 0;
@@ -79,8 +103,8 @@ void initObjective(char area[ROWS][COLS], int amount, int bombAmount)
 	
 	while(count < amount)
 	{
-		tempX = rand() % COLS;
-		tempY = rand() % ROWS;
+		tempX = rand() % cols;
+		tempY = rand() % rows;
 
 		if(area[tempY][tempX] == TILE)
 		{
@@ -92,8 +116,8 @@ void initObjective(char area[ROWS][COLS], int amount, int bombAmount)
 
 	while(count < bombAmount)
 	{
-		tempX = rand() % COLS;
-		tempY = rand() % ROWS;
+		tempX = rand() % cols;
+		tempY = rand() % rows;
 
 		if(area[tempY][tempX] == TILE)
 		{
@@ -104,7 +128,7 @@ void initObjective(char area[ROWS][COLS], int amount, int bombAmount)
 
 }
 
-int checkObjective(char area[ROWS][COLS], char type)
+int checkObjective(char **area, char type)
 {
 	int gotObjective = 0;
 

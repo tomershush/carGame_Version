@@ -1,4 +1,4 @@
-HDIR = /home/tomer/scripts/C_projects/carGame_Version/Headers
+HDIR = /home/tomershush/Scripts/carGame/carGame_Version/Headers
 ODIR = Obj
 CC = gcc
 CFLAGS = -I/$(HDIR) -lncurses

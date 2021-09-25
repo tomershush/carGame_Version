@@ -3,9 +3,10 @@
 #include <ncurses.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
-#define ROWS 25
-#define COLS 50
+#define ROWS 10
+#define COLS 10
 #define OBJECTIVE_COUNT 5
 #define PLAYER_SIZE 5
 #define POSITION_POINTS 4
@@ -28,10 +29,11 @@
 #define DOWN 'S'
 #define QUIT 'Q'
 
-void initArea(char area[ROWS][COLS]);
-void movePlayer(char area[ROWS][COLS], char move);
-void initObjective(char area[ROWS][COLS], int amount, int bombAmount);
-int checkObjective(char area[ROWS][COLS], char type);
+void movePlayer(char **area, char move);
+void initObjective(char **area, int amount, int bombAmount);
+char **initArea();
+void freeArea(char **area);
+int checkObjective(char **area, char type);
 
 
 
