@@ -54,7 +54,7 @@ A function to move the player to a new position.
 Input: 2D array that represents the game area, move char that represents the direction of the player movement.
 Output: None.
 */
-void movePlayer(char **area, char move)
+void movePlayer(char **area, char move, int turn)
 {	
 	
 	switch(move)
