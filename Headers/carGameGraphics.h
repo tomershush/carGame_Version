@@ -6,6 +6,7 @@
 #define TILE '_'
 #define OBJECTIVE '&'
 #define BOMB '#'
+#define HOSTILE '^'
 #define RUN_OVER_HORIZONTAL '='
 #define RUN_OVER_VERTICAL '|'
 
@@ -14,9 +15,11 @@ void renderPlayer(char **area);
 void deletePlayer(char **area, char moveType);
 void deleteRoad(char **area);
 
+//Global variables declaration.
 extern int rows;
 extern int cols;
 extern int lives;
+extern int hostileStat;
 extern int victoryCount;
 extern int position[POSITION_POINTS];
 

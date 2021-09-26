@@ -5,8 +5,8 @@
 #include <time.h>
 #include <string.h>
 
-#define ROWS 10
-#define COLS 10
+#define DEFAULT_ROWS 10
+#define DEFAULT_COLS 50
 #define OBJECTIVE_COUNT 5
 #define PLAYER_SIZE 5
 #define POSITION_POINTS 4
@@ -16,11 +16,13 @@
 #define PREV_X 1
 #define CURR_Y 2
 #define PREV_Y 3
+#define HOSTILE_COORDINATES 2
+#define HOSTILE_X 0
+#define HOSTILE_Y 1
 
 
-#define START_Y ROWS / 2
-#define START_X COLS / 2
-#define BOMB_COUNT (ROWS * COLS) / 30
+#define DEFAULT_DIFFICULTY 25
+#define BOMB_COUNT (DEFAULT_ROWS * DEFAULT_COLS) / DEFAULT_DIFFICULTY
 
 
 #define LEFT 'A'
@@ -30,9 +32,11 @@
 #define QUIT 'Q'
 
 void movePlayer(char **area, char move);
+void moveHostile(char **area, int hostilePos[], int hostileStat);
 void initObjective(char **area, int amount, int bombAmount);
-char **initArea();
+void initHostile(char **area, int hostilePos[]);
 void freeArea(char **area);
+char **initArea();
 int checkObjective(char **area, char type);
 
 

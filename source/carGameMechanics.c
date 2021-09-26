@@ -85,11 +85,64 @@ void movePlayer(char **area, char move)
 	}
 	victoryCount += checkObjective(area, OBJECTIVE);
 	lives -= checkObjective(area, BOMB);
+	
+	if(checkObjective(area, HOSTILE))
+	{
+		lives -= checkObjective(area, HOSTILE);
+		hostileStat = TRUE;
+	}
 
 	renderPlayer(area);
 }
 
 
+/*
+A function to move the hostile after the player. The hostile follows a simple algorithm:
+If the player's X or Y coordinates are greater than his, increment them by 1.
+If the player's X or Y coordinates are smaller than his, decrement them by 1.
+Input: Area of the game, array of hostile coordinates, hostile status(Whether or not he is active).
+Output: None.
+*/
+void moveHostile(char **area, int hostilePos[], int hostileStat)
+{
+
+	if(hostileStat == FALSE)
+	{
+		if(position[CURR_X] > hostilePos[HOSTILE_X] && hostilePos[HOSTILE_X] != cols - 1)
+		{
+			area[hostilePos[HOSTILE_Y]][hostilePos[HOSTILE_X]] = TILE;
+
+			hostilePos[HOSTILE_X]++;
+
+			area[hostilePos[HOSTILE_Y]][hostilePos[HOSTILE_X]] = HOSTILE; 
+		}
+		else if (position[CURR_X] < hostilePos[HOSTILE_X] && hostilePos[HOSTILE_X] != 0)
+		{
+			area[hostilePos[HOSTILE_Y]][hostilePos[HOSTILE_X]] = TILE;
+
+			hostilePos[HOSTILE_X]--;
+
+			area[hostilePos[HOSTILE_Y]][hostilePos[HOSTILE_X]] = HOSTILE; 
+		}
+
+		if(position[CURR_Y] > hostilePos[HOSTILE_Y] && hostilePos[HOSTILE_Y] != rows - 1)
+		{
+			area[hostilePos[HOSTILE_Y]][hostilePos[HOSTILE_X]] = TILE;
+
+			hostilePos[HOSTILE_Y]++;
+
+			area[hostilePos[HOSTILE_Y]][hostilePos[HOSTILE_X]] = HOSTILE;
+		}
+		else if(position[CURR_Y] < hostilePos[HOSTILE_Y] && hostilePos[HOSTILE_Y] != 0)
+		{
+			area[hostilePos[HOSTILE_Y]][hostilePos[HOSTILE_X]] = TILE;
+
+			hostilePos[HOSTILE_Y]--;
+
+			area[hostilePos[HOSTILE_Y]][hostilePos[HOSTILE_X]] = HOSTILE;
+		}
+	}
+}
 
 
 
@@ -126,6 +179,35 @@ void initObjective(char **area, int amount, int bombAmount)
 		}
 	}
 
+}
+
+/*
+A function to initialize the hostile bot.
+Input: Area of the game, array of hostile's coordinates.
+Output: None.
+*/
+void initHostile(char **area, int hostilePos[])
+{
+	int tempX = 0;
+	int tempY = 0;
+	int status = 0;
+
+	srand(time(0));
+
+	while(status == FALSE)
+	{
+		tempX = rand() % cols;
+		tempY = rand() % rows;
+
+		if(area[tempY][tempX] == TILE)
+		{
+			status = TRUE;
+			area[tempY][tempX] = HOSTILE;
+
+			hostilePos[HOSTILE_X] = tempX;
+			hostilePos[HOSTILE_Y] = tempY;
+		}
+	}
 }
 
 int checkObjective(char **area, char type)
