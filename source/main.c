@@ -85,7 +85,7 @@ int main()
 		// Check if the move is valid and the player is not at the border.
 		if(move == RIGHT && position[CURR_X] != cols - 2 || move == LEFT && position[CURR_X] != 1 || move == UP && position[CURR_Y] != 1 || move == DOWN && position[CURR_Y] != rows - 2)
 		{
-			movePlayer(area, move);
+			movePlayer(area, move, turn);
 			renderArea(area);
 			turn++; 
 
