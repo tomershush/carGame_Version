@@ -14,7 +14,6 @@ int rows = 0;
 int cols = 0;
 int hostileStat = 0;
 
-
 int main()
 {
 	char **area = NULL;
@@ -70,7 +69,7 @@ int main()
 	bombCount = rows * cols / difficulty;
 
 	area = initArea();
-	initObjective(area, OBJECTIVE_COUNT, bombCount);
+	initObjective(area, OBJECTIVE_COUNT, bombCount, LIVE_COUNTER);
 	initHostile(area, hostilePosition);
 
 	printIntro();

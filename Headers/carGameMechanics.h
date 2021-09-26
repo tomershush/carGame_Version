@@ -8,6 +8,7 @@
 #define DEFAULT_ROWS 10
 #define DEFAULT_COLS 50
 #define OBJECTIVE_COUNT 5
+#define LIVE_COUNTER 5
 #define PLAYER_SIZE 5
 #define TURN_CYCLE 3
 #define POSITION_POINTS ((TURN_CYCLE * 2)+ 1)
@@ -33,7 +34,7 @@
 
 void movePlayer(char **area, char move, int turn);
 void moveHostile(char **area, int hostilePos[], int hostileStat);
-void initObjective(char **area, int amount, int bombAmount);
+void initObjective(char **area, int amount, int bombAmount, int lifeCount);
 void initHostile(char **area, int hostilePos[]);
 void freeArea(char **area);
 char **initArea();

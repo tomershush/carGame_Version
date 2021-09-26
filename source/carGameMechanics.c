@@ -87,7 +87,7 @@ void movePlayer(char **area, char move, int turn)
 
 	victoryCount += checkObjective(area, OBJECTIVE);
 	lives -= checkObjective(area, BOMB);
-	
+	lives += checkObjective(area, LIVEBOOST);
 	if(checkObjective(area, HOSTILE))
 	{
 		lives -= checkObjective(area, HOSTILE);
@@ -149,7 +149,7 @@ void moveHostile(char **area, int hostilePos[], int hostileStat)
 
 
 
-void initObjective(char **area, int amount, int bombAmount)
+void initObjective(char **area, int amount, int bombAmount, int lifeCount)
 {
 	int count = 0;
 	int tempX = 0;
@@ -178,6 +178,17 @@ void initObjective(char **area, int amount, int bombAmount)
 		{
 			count++;
 			area[tempY][tempX] = BOMB;
+		}
+	}
+	count = 0;
+	while(count < lifeCount){
+		tempX = rand() % cols;
+		tempY = rand() % rows;
+
+		if(area[tempY][tempX] == TILE)
+		{
+			count++;
+			area[tempY][tempX] = LIVEBOOST;
 		}
 	}
 

@@ -6,6 +6,7 @@
 #define TILE '_'
 #define OBJECTIVE '&'
 #define BOMB '#'
+#define LIVEBOOST '+'
 #define HOSTILE '^'
 #define RUN_OVER_HORIZONTAL '='
 #define RUN_OVER_VERTICAL '|'
