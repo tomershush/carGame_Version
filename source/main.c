@@ -38,7 +38,7 @@ int main()
 
 	do // Loop for choosing game mode.
 	{	
-		printw("What mode would you like?\n[1] -Developer mode (Can cause the game to break)\n[2] - Regular mode\n");
+		printw("What mode would you like?\n[1] Developer mode (Can cause the game to break)\n[2] - Regular mode\n");
 		scanw("%d", &mode);
 	}while(mode > REGULAR || mode < DEV);
 
