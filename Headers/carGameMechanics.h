@@ -9,12 +9,12 @@
 #define DEFAULT_COLS 50
 #define OBJECTIVE_COUNT 5
 #define PLAYER_SIZE 5
-#define POSITION_POINTS 4
-#define LIVES 3
 #define TURN_CYCLE 3
+#define POSITION_POINTS ((TURN_CYCLE * 2)+ 1)
+#define LIVES 3
 #define CURR_X 0
 #define PREV_X 1
-#define CURR_Y 2
+#define CURR_Y 3
 #define PREV_Y 3
 #define HOSTILE_COORDINATES 2
 #define HOSTILE_X 0
@@ -31,7 +31,7 @@
 #define DOWN 'S'
 #define QUIT 'Q'
 
-void movePlayer(char **area, char move);
+void movePlayer(char **area, char move, int turn);
 void moveHostile(char **area, int hostilePos[], int hostileStat);
 void initObjective(char **area, int amount, int bombAmount);
 void initHostile(char **area, int hostilePos[]);
