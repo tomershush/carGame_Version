@@ -69,7 +69,7 @@ int main()
 	bombCount = rows * cols / difficulty;
 
 	area = initArea();
-	initObjective(area, OBJECTIVE_COUNT, bombCount, LIVE_COUNTER);
+	initObjective(area, OBJECTIVE_COUNT, bombCount, LIFE_COUNTER);
 	initHostile(area, hostilePosition);
 
 	printIntro();
